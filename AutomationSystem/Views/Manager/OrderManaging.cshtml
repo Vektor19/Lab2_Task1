@@ -1,0 +1,78 @@
+﻿@using AutomationSystem.Areas.Identity.Data
+@model List<Order>
+@{
+    ViewData["Title"] = "Main page";
+}
+
+<h1 style="text-align:center;">Управління замовленнями</h1>
+
+<div class="all-orders">
+    <table class ="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID Клієнта</th>
+                <th>ID Техніки</th>
+                <th>Категорія ремонту</th>
+                <th>Статус</th>
+                <th>Ціна</th>
+                <th>ID Майстра</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td class="border">@order.Id</td>
+                    <td class="border">@order.ClientId</td>
+                    <td class="border">@order.TechnikId</td>
+                    <td class="border">@order.FixCategory.Description</td>
+                    @if (order.Status == false)
+                    {
+                        <td class="border">В процессі</td>
+                    }
+                    else
+                    {
+                        <td class="border">Готово</td>
+                    }
+                    <td class="border">@order.Price</td>
+                    <td class="border">@order.MasterId</td>
+
+                    <td class="non-border"><a class="btn" asp-controller="Order" asp-action="OrderDetails" asp-route-orderId="@order.Id">Details</a></td>
+                    <td class = "non-border"><a class="btn" asp-controller="Order" asp-action="UpdateOrder" asp-route-orderId="@order.Id">Edit</a></td>
+                    <td class ="non-border"><a class="btn" asp-controller="Order" asp-action="DeleteOrder" asp-route-orderId="@order.Id">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+        <td class="non-border"><label>Загальна ціна всіх замовлень: @ViewBag.Sum</label></td>
+    </table>
+</div>
+
+
+
+@* @using AutomationSystem.Areas.Identity.Data;
+
+
+@model List<FixCategory>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Categories</h1>
+
+@foreach (var category in Model)
+{
+    <div class="category-card">
+        <div class="category-title"><b>ID:</b> @category.Id</div>
+        <div class="category-description"><b>Name:</b> @category.Description</div>
+        <div class="category-title">
+            <div>
+                <h4>@category.Description</h4>
+                <a asp-controller="Order" asp-action="PlaceOrder" asp-route-fixCategoryId="@category.Id">Create Order</a>
+            </div>
+         </div>
+    </div>
+}
+ *@

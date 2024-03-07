@@ -1,0 +1,19 @@
+﻿@using AutomationSystem.Areas.Identity.Data;
+@model FixCategory;
+
+<h1 style="text-align:center;">Створення категорії</h1>
+<link rel="stylesheet" href="~/css/form_style.css" asp-append-version="true" />
+
+<div class="forms">
+    <form asp-controller="Category" asp-action="CreateCategory" method="post" class="format">
+        <div>
+            <label>Назва категорії:</label>
+            <input asp-for="Description" />
+        </div>
+        <div>
+            <label>URL картинки:</label>
+            <input asp-for="ImagePath" />
+        </div>
+        <button  type="submit">Create Category</button>
+    </form>
+</div>

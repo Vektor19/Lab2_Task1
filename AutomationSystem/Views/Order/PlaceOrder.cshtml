@@ -1,0 +1,26 @@
+﻿@using AutomationSystem.Areas.Identity.Data;
+@model Technik;
+<link rel="stylesheet" href="~/css/form_style.css" asp-append-version="true" />
+
+
+<div class="forms">
+    <form asp-controller="Order" asp-action="PlaceOrder" method="post" class="format">
+        <div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" name="FixCategoryId" value="@ViewBag.FixCategoryId" />
+        </div>
+        <div>
+            <label for="brand">Бренд техніки:</label>
+            <input asp-for="Brand" id="brand" />
+        </div>
+        <div>
+            <label for="model">Модель техніки:</label>
+            <input asp-for="Model" id="model" />
+        </div>
+        <div>
+            <label for="description">Опис поломки:</label>
+            <input asp-for="Description" id="description" />
+        </div>
+        <button type="submit">Створити замовлення</button>
+    </form>
+</div>

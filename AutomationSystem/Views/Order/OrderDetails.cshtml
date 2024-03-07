@@ -1,0 +1,62 @@
+﻿@using AutomationSystem.Areas.Identity.Data;
+@model Order
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+<h1 style="text-align:center;">Дані про замовлення</h1>
+
+<div>
+    <label>Id Замовлення: @Model.Id</label>
+</div>
+<div>
+    @if (@Model.Status)
+    {
+        <label>
+            Статус: Готове
+        </label>
+    }
+    else
+    {
+        <label>
+            Статус: В процесі
+        </label>
+    }
+</div>
+<div>
+    <label>Id Майстра: @Model.MasterId</label>
+</div>
+<div>
+    <label>Id Клієнта: @Model.ClientId</label>
+</div>
+<div>
+    <label>Ім'я Клієнта: @Model.AutomationSystemUser.Name</label>
+</div>
+<div>
+    <label>Прізвище Клієнта: @Model.AutomationSystemUser.SecondName</label>
+</div>
+<div>
+    <label>Email Клієнта: @Model.AutomationSystemUser.Email</label>
+</div>
+<div>
+    <label>Категорія ремонту: @Model.FixCategory.Description</label>
+</div>
+<div>
+    <label>Бренд техніки: @Model.Technik.Brand</label>
+</div>
+<div>
+    <label>Модель техніки: @Model.Technik.Model</label>
+</div>
+<div>
+    <label>Опис поломки: @Model.Technik.Description</label>
+</div>
+<div>
+    <label>Ціна замовлення: @Model.Price</label>
+</div>
+<div>
+    <label>Дата сворення замовлення: @Model.data</label>
+</div>
+
+
+<a class="btn" asp-controller="Manager" asp-action="OrderManaging">Назад</a>
+        

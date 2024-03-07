@@ -1,0 +1,23 @@
+﻿@using AutomationSystem.Areas.Identity.Data;
+@model FixCategory
+@{
+    ViewData["Title"] = "Зміна категорії";
+}
+
+<link rel="stylesheet" href="~/css/form_style.css" asp-append-version="true" />
+<h1 style="text-align:center;">Зміна категорії</h1>
+<div class="forms">
+    <form asp-controller="Category" asp-action="UpdateCategory" method="post" class="format">
+        <input type="hidden" asp-for="Id"/>
+        <input type="hidden" name="fixCategoryId" value="@ViewBag.Id" />
+        <div>
+            <label>Назва:</label>
+            <input asp-for="Description" value="@Model.Description" />
+        </div>
+        <div>
+            <label>URL картинки:</label>
+            <input asp-for="ImagePath" value="@Model.ImagePath" />
+        </div>
+        <button type="submit">Змінити категорію</button>
+    </form>
+</div>

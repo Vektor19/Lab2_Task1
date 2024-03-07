@@ -1,0 +1,40 @@
+﻿@using AutomationSystem.Areas.Identity.Data;
+@model List<Order>
+@{
+    ViewData["Title"] = "Замовлення";
+}
+
+<h1 style="text-align:center;">Ваші замовлення</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Категорія ремонту</th>
+            <th>Опис поломки</th>
+            <th>Статус</th>
+            <th>Ціна</th>
+            <th>Дата створення</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td class="border">@order.FixCategory.Description</td>
+                <td class="border">@order.Technik.Description</td>
+                @if (order.Status == false)
+                {
+                    <td class="border">В процессі</td>
+                }
+                else
+                {
+                    <td class="border">Готово</td>
+                }
+                <td class="border">@order.Price</td>
+                <td class="border">@order.data</td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>

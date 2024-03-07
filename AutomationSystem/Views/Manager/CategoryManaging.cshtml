@@ -1,0 +1,60 @@
+﻿@using AutomationSystem.Areas.Identity.Data
+@model List<FixCategory>
+@{
+    ViewData["Title"] = "Main page";
+}
+<h1 style="text-align:center;">Управління категоріями</h1>
+<div class="all-categories">
+    <table class ="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Назва</th>
+                <th>URL Картинки</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td class="border">@category.Id</td>
+                    <td class="border">@category.Description</td>
+                    <td class="border">@category.ImagePath</td>
+
+                    <td class="non-border"><a class="btn" asp-controller="Category" asp-action="UpdateCategory" asp-route-fixCategoryId="@category.Id">Змінити</a></td>
+                    <td class="non-border"><a class="btn" asp-controller="Category" asp-action="DeleteCategory" asp-route-fixCategoryId="@category.Id">Видалити</a></td>
+                </tr>
+            }
+        </tbody>
+        <td class="non-border"><a class="btn" asp-controller="Category" asp-action="CreateCategory">Створити</a></td>
+    </table>
+</div>
+
+
+
+@* @using AutomationSystem.Areas.Identity.Data;
+
+
+@model List<FixCategory>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Categories</h1>
+
+@foreach (var category in Model)
+{
+    <div class="category-card">
+        <div class="category-title"><b>ID:</b> @category.Id</div>
+        <div class="category-description"><b>Name:</b> @category.Description</div>
+        <div class="category-title">
+            <div>
+                <h4>@category.Description</h4>
+                <a asp-controller="Order" asp-action="PlaceOrder" asp-route-fixCategoryId="@category.Id">Create Order</a>
+            </div>
+         </div>
+    </div>
+}
+ *@

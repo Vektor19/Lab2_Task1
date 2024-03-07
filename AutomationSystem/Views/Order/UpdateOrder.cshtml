@@ -1,0 +1,37 @@
+﻿@using AutomationSystem.Areas.Identity.Data;
+@model Order
+@{
+    ViewData["Title"] = "My Orders";
+}
+<link rel="stylesheet" href="~/css/form_style.css" asp-append-version="true" />
+<h1 style="text-align:center;">Зміна замовлення</h1>
+<div class="forms">
+    <form asp-controller="Order" asp-action="UpdateOrder" method="post" class="format">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" name="orderId" value="@ViewBag.orderId" />
+        <div>
+            <label>
+                Чи готове
+            </label>
+            <input asp-for="Status" />
+        </div>
+        <div>
+            <label>Категорія ремонту</label>
+            <select asp-for="FixCategoryId">
+                @foreach(var category in @ViewBag.FixCategories)
+                {
+                    <option value="@category.Id">@category.Description</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label>Ціна:</label>
+            <input asp-for="Price" value="@Model.Price" />
+        </div>
+        <div>
+            <label>Id Майстра:</label>
+            <input asp-for="MasterId" value="@Model.MasterId" />
+        </div>
+        <button type="submit">Update Order</button>
+    </form>
+</div>

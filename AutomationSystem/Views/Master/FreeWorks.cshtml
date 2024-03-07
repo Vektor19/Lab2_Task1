@@ -1,0 +1,72 @@
+﻿@using AutomationSystem.Areas.Identity.Data;
+@model List<Order>;
+@{
+    ViewData["Title"] = "Main page";
+}
+
+
+<h1 style="text-align:center;">Вільні замовлення</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Категорія ремонту</th>
+            <th>Бренд техніки</th>
+            <th>Модель техніки</th>
+            <th>Опис поломки</th>
+            <th>Статус</th>
+            <th>Ціна</th>
+            <th>Дата</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td class="border">@order.FixCategory.Description</td>
+                <td class="border">@order.Technik.Brand</td>
+                <td class="border">@order.Technik.Model</td>
+                <td class="border">@order.Technik.Description</td>
+                @if (order.Status == false)
+                {
+                    <td class="border">В процессі</td>
+                }
+                else
+                {
+                    <td class="border">Готово</td>
+                }
+                <td class="border">@order.Price</td>
+                <td class="border">@order.data</td>
+                <td class="non-border"><a class="btn" asp-controller="Master" asp-action="TakeRepair" asp-route-orderId="@order.Id">Взятися за роботу</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@* @using AutomationSystem.Areas.Identity.Data;
+
+
+@model List<FixCategory>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Categories</h1>
+
+@foreach (var category in Model)
+{
+    <div class="category-card">
+        <div class="category-title"><b>ID:</b> @category.Id</div>
+        <div class="category-description"><b>Name:</b> @category.Description</div>
+        <div class="category-title">
+            <div>
+                <h4>@category.Description</h4>
+                <a asp-controller="Order" asp-action="PlaceOrder" asp-route-fixCategoryId="@category.Id">Create Order</a>
+            </div>
+         </div>
+    </div>
+}
+ *@

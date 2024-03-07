@@ -1,0 +1,26 @@
+﻿@using AutomationSystem.Areas.Identity.Data;
+
+
+@model List<FixCategory>
+
+@{
+    ViewData["Title"] = "Hateome Page";
+}
+
+<link rel="stylesheet" href="~/css/categories.css" asp-append-version="true" />
+<section>
+    <div class="all-categories">
+        @foreach (var category in Model)
+        {
+            <div class="category">
+                <img src=@category.ImagePath>
+                <div class="category-info">
+                    <h4 class="category-title">
+                        @category.Description
+                    </h4>
+                    <a class="btn" asp-controller="Order" asp-action="PlaceOrder" asp-route-fixCategoryId="@category.Id">Замовити Ремонт</a>
+                </div>
+            </div>
+        }
+    </div>
+</section>

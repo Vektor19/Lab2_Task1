@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Main page";
+}
+
+<h1>Make<br> New Friends</h1>
+<p>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore omnis
+    ab commodi id qui saepe tenetur, vitae quae, esse illum dolorum obcaecati
+    harum? Earum voluptatum tempore facere doloribus tenetur voluptate?
+</p>
+<a class="btn" href="#">Join Now</a>
+
+@section MainPageImage{
+    <img src="/img/man.png" class="feature-img anim">
+}
+
+
+
+@* @using AutomationSystem.Areas.Identity.Data;
+
+
+@model List<FixCategory>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Categories</h1>
+
+@foreach (var category in Model)
+{
+    <div class="category-card">
+        <div class="category-title"><b>ID:</b> @category.Id</div>
+        <div class="category-description"><b>Name:</b> @category.Description</div>
+        <div class="category-title">
+            <div>
+                <h4>@category.Description</h4>
+                <a asp-controller="Order" asp-action="PlaceOrder" asp-route-fixCategoryId="@category.Id">Create Order</a>
+            </div>
+         </div>
+    </div>
+}
+ *@

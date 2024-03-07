@@ -1,0 +1,89 @@
+﻿@using AutomationSystem.Areas.Identity.Data;
+@model List<Order>
+@{
+    ViewData["Title"] = "Роботи";
+}
+
+<h1 style="text-align:center;">Ваші роботи</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Категорія ремонту</th>
+            <th>Бренд техніки</th>
+            <th>Модель техніки</th>
+            <th>Опис поломки</th>
+            <th>Статус</th>
+            <th>Ціна</th>
+            <th>Дата</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            if (!order.Status)
+            {
+                <tr>
+                    <td class="border">@order.FixCategory.Description</td>
+                    <td class="border">@order.Technik.Brand</td>
+                    <td class="border">@order.Technik.Model</td>
+                    <td class="border">@order.Technik.Description</td>
+                    @if (order.Status == false)
+                    {
+                        <td class="border">В процессі</td>
+                    }
+                    else
+                    {
+                        <td class="border">Готово</td>
+                    }
+                    <td class="border">@order.Price</td>
+                    <td class="border">@order.data</td>
+                    <td class="non-border"><a class="btn" asp-controller="Master" asp-action="CompleteWork" asp-route-orderId="@order.Id">Позначити як готове</a></td>
+
+                </tr>
+            }
+            
+        }
+    </tbody>
+</table>
+
+
+<h1 style="text-align:center; margin-top:50px;">Виконані роботи</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Категорія ремонту</th>
+            <th>Бренд техніки</th>
+            <th>Модель техніки</th>
+            <th>Опис поломки</th>
+            <th>Статус</th>
+            <th>Ціна</th>
+            <th>Дата</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            if (order.Status)
+            {
+                <tr>
+                    <td class="border">@order.FixCategory.Description</td>
+                    <td class="border">@order.Technik.Brand</td>
+                    <td class="border">@order.Technik.Model</td>
+                    <td class="border">@order.Technik.Description</td>
+                    @if (order.Status == false)
+                    {
+                        <td class="border">В процессі</td>
+                    }
+                    else
+                    {
+                        <td class="border">Готово</td>
+                    }
+                    <td class="border">@order.Price</td>
+                    <td class="border">@order.data</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
